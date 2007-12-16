@@ -2,14 +2,14 @@
 
 Name:		libnb-javaparser
 Version:	6.0
-Release:	%mkrel 1
+Release:	%mkrel 2
 Epoch:		0
 Summary:        NetBeans Java Parser
 License:        GPLv2 with exceptions
 Url:            http://java.netbeans.org/
 Group:		Development/Java
 Source0:        nb-javaparser-6.0.zip
-BuildRequires:	jpackage-utils >= 1.6
+BuildRequires:	java-rpmbuild >= 1.6
 BuildRequires:  ant
 BuildRequires:  ant-nodeps
 BuildRequires:  java >= 1.6.0
