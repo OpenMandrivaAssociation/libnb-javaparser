@@ -15,7 +15,6 @@ BuildRequires:  ant-nodeps
 BuildRequires:  java >= 1.6.0
 Requires:       java >= 1.6.0
 BuildArch:      noarch
-BuildRoot:       %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 Java parser to analyse Java source files inside of the NetBeans IDE
