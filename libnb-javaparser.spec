@@ -23,7 +23,7 @@ Java parser to analyse Java source files inside of the NetBeans IDE
 %prep
 %{__rm} -fr %{buildroot}
 %{__rm} -fr libnb-javaparser-java-6.0
-%setup
+%setup -n libnb-javaparser-java-6.0
 # remove all binary libs
 find . -name "*.jar" -exec %{__rm} -f {} \;
 
@@ -34,9 +34,9 @@ ant -f build.xml jar -verbose
 %install
 # jar
 %{__install} -d -m 755 %{buildroot}%{_javadir}
-%{__install} -m 644 libnb-javaparser-java-6.0/dist/javac-api.jar %{buildroot}%{_javadir}/%{name}-api-%{version}.jar
+%{__install} -m 644 dist/javac-api.jar %{buildroot}%{_javadir}/%{name}-api-%{version}.jar
 %{__ln_s} %{name}-api-%{version}.jar %{buildroot}%{_javadir}/%{name}-api.jar
-%{__install} -m 644 libnb-javaparser-java-6.0/dist/javac-impl.jar %{buildroot}%{_javadir}/%{name}-impl-%{version}.jar
+%{__install} -m 644 dist/javac-impl.jar %{buildroot}%{_javadir}/%{name}-impl-%{version}.jar
 %{__ln_s} %{name}-impl-%{version}.jar %{buildroot}%{_javadir}/%{name}-impl.jar
 
 %clean
