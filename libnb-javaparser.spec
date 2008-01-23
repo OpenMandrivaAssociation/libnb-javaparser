@@ -6,9 +6,9 @@ Release:	%mkrel 2
 Epoch:		0
 Summary:        NetBeans Java Parser
 License:        GPLv2 with exceptions
-Url:            http://java.netbeans.org/
-Group:		Development/Java
-Source0:        nb-javaparser-6.0.zip
+Url:            http://java.netbeans.org/javaparser/
+Group:          Development/Java
+Source0:        http://java.netbeans.org/files/documents/25/1798/libnb-javaparser-java-6.0-src.zip
 BuildRequires:	java-rpmbuild >= 1.6
 BuildRequires:  ant
 BuildRequires:  ant-nodeps
@@ -22,21 +22,21 @@ Java parser to analyse Java source files inside of the NetBeans IDE
 
 %prep
 %{__rm} -fr %{buildroot}
-%{__rm} -fr nb-javaparser-6.0
-%setup -c -n nb-javaparser-6.0
+%{__rm} -fr libnb-javaparser-java-6.0
+%setup
 # remove all binary libs
 find . -name "*.jar" -exec %{__rm} -f {} \;
 
 %build
 [ -z "$JAVA_HOME" ] && export JAVA_HOME=%{_jvmdir}/java 
-ant -f Jsr199.nb60/build.xml jar -verbose
+ant -f build.xml jar -verbose
 
 %install
 # jar
 %{__install} -d -m 755 %{buildroot}%{_javadir}
-%{__install} -m 644 Jsr199.nb60/dist/javac-api.jar %{buildroot}%{_javadir}/%{name}-api-%{version}.jar
+%{__install} -m 644 libnb-javaparser-java-6.0/dist/javac-api.jar %{buildroot}%{_javadir}/%{name}-api-%{version}.jar
 %{__ln_s} %{name}-api-%{version}.jar %{buildroot}%{_javadir}/%{name}-api.jar
-%{__install} -m 644 Jsr199.nb60/dist/javac-impl.jar %{buildroot}%{_javadir}/%{name}-impl-%{version}.jar
+%{__install} -m 644 libnb-javaparser-java-6.0/dist/javac-impl.jar %{buildroot}%{_javadir}/%{name}-impl-%{version}.jar
 %{__ln_s} %{name}-impl-%{version}.jar %{buildroot}%{_javadir}/%{name}-impl.jar
 
 %clean
