@@ -2,7 +2,7 @@
 
 Name:		libnb-javaparser
 Version:	6.0
-Release:	%mkrel 3
+Release:	%mkrel 5
 Epoch:		0
 Summary:        NetBeans Java Parser
 License:        GPLv2 with exceptions
