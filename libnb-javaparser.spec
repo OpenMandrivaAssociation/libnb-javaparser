@@ -1,14 +1,14 @@
 %define section		free
 
 Name:		libnb-javaparser
-Version:	6.1
+Version:	6.5
 Release:	%mkrel 1
 Epoch:		0
 Summary:        NetBeans Java Parser
 License:        GPLv2 with exceptions
 Url:            http://java.netbeans.org/javaparser/
 Group:          Development/Java
-Source0:        http://java.netbeans.org/files/documents/25/2033/nb-javaparser-6.1-src.zip
+Source0:        http://java.netbeans.org/files/documents/25/2367/nb-javaparser-6.5-src.zip
 BuildRequires:	java-rpmbuild >= 1.6
 BuildRequires:  ant
 BuildRequires:  ant-nodeps
@@ -22,8 +22,8 @@ Java parser to analyse Java source files inside of the NetBeans IDE
 
 %prep
 %{__rm} -fr %{buildroot}
-%{__rm} -fr nb-javaparser-6.1
-%setup -n nb-javaparser-6.1
+%{__rm} -fr nb-javaparser-6.5
+%setup -n nb-javaparser-6.5
 # remove all binary libs
 find . -name "*.jar" -exec %{__rm} -f {} \;
 
