@@ -2,7 +2,7 @@
 
 Name:		libnb-javaparser
 Version:	6.5
-Release:	%mkrel 1
+Release:	%mkrel 2
 Epoch:		0
 Summary:        NetBeans Java Parser
 License:        GPLv2 with exceptions
@@ -14,6 +14,7 @@ BuildRequires:  ant
 BuildRequires:  ant-nodeps
 BuildRequires:  java >= 1.6.0
 Requires:       java >= 1.6.0
+Provides:	netbeans-javaparser = %{version}
 BuildArch:      noarch
 BuildRoot:       %{_tmppath}/%{name}-%{version}-%{release}-root
 
