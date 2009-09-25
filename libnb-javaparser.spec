@@ -20,6 +20,7 @@ BuildRequires:  ant
 BuildRequires:  ant-nodeps
 BuildRequires:  java-devel >= 1.6.0
 BuildRequires:  jpackage-utils
+BuildRequires: java-rpmbuild >= 0:1.5.32
 
 Requires:       java >= 1.6.0
 Requires:       jpackage-utils
