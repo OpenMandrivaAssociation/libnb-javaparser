@@ -1,51 +1,60 @@
-%define section		free
+# Prevent brp-java-repack-jars from being run.
+%define __jar_repack %{nil}
 
-Name:		libnb-javaparser
-Version:	6.5
-Release:	%mkrel 3
-Epoch:		0
+Name:           libnb-javaparser
+Version:        6.7.1
+Release:        %mkrel 1
 Summary:        NetBeans Java Parser
 License:        GPLv2 with exceptions
 Url:            http://java.netbeans.org/javaparser/
-Group:          Development/Java
-Source0:        http://java.netbeans.org/files/documents/25/2367/nb-javaparser-6.5-src.zip
-BuildRequires:	java-rpmbuild >= 1.6
+Group:          Development/Libraries
+# The source for this package was pulled from upstream's vcs.  Use the
+# following commands to generate the tarball:
+# hg clone http://hg.netbeans.org/main/nb-javac/
+# cd nb-javac/
+# hg update -r 17cd0b404436
+# tar -czvf ../nb-javac-6.7.1.tar.gz .
+Source0:        nb-javac-%{version}.tar.gz
+
 BuildRequires:  ant
 BuildRequires:  ant-nodeps
-BuildRequires:  java >= 1.6.0
+BuildRequires:  java-devel >= 1.6.0
+BuildRequires:  jpackage-utils
+
 Requires:       java >= 1.6.0
-Provides:	netbeans-javaparser = %{version}
+Requires:       jpackage-utils
+Provides:       netbeans-javaparser
+
 BuildArch:      noarch
-BuildRoot:       %{_tmppath}/%{name}-%{version}-%{release}-root
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 Java parser to analyse Java source files inside of the NetBeans IDE
 
 %prep
-%{__rm} -fr %{buildroot}
-%{__rm} -fr nb-javaparser-6.5
-%setup -n nb-javaparser-6.5
+%setup -q -c
 # remove all binary libs
-find . -name "*.jar" -exec %{__rm} -f {} \;
+find . -name "*.jar" -exec %__rm -f {} \;
 
 %build
 [ -z "$JAVA_HOME" ] && export JAVA_HOME=%{_jvmdir}/java 
-ant -f make/netbeans/nb-javac/build.xml jar
+%ant -f make/netbeans/nb-javac/build.xml jar
 
 %install
-%{__rm} -fr %{buildroot}
+%__rm -fr %{buildroot}
 
 # jar
-%{__install} -d -m 755 %{buildroot}%{_javadir}
-%{__install} -m 644 make/netbeans/nb-javac/dist/javac-api.jar %{buildroot}%{_javadir}/%{name}-api-%{version}.jar
-%{__ln_s} %{name}-api-%{version}.jar %{buildroot}%{_javadir}/%{name}-api.jar
-%{__install} -m 644 make/netbeans/nb-javac/dist/javac-impl.jar %{buildroot}%{_javadir}/%{name}-impl-%{version}.jar
-%{__ln_s} %{name}-impl-%{version}.jar %{buildroot}%{_javadir}/%{name}-impl.jar
+%__install -d -m 755 %{buildroot}%{_javadir}
+%__install -m 644 make/netbeans/nb-javac/dist/javac-api.jar %{buildroot}%{_javadir}/%{name}-api-%{version}.jar
+%__ln_s %{name}-api-%{version}.jar %{buildroot}%{_javadir}/%{name}-api.jar
+%__install -m 644 make/netbeans/nb-javac/dist/javac-impl.jar %{buildroot}%{_javadir}/%{name}-impl-%{version}.jar
+%__ln_s %{name}-impl-%{version}.jar %{buildroot}%{_javadir}/%{name}-impl.jar
 
 %clean
-%{__rm} -rf %{buildroot}
+%__rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
+%doc ASSEMBLY_EXCEPTION LICENSE README
 %{_javadir}/*
 
