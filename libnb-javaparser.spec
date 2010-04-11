@@ -1,30 +1,29 @@
 # Prevent brp-java-repack-jars from being run.
 %define __jar_repack %{nil}
 
-Name:           libnb-javaparser
-Version:        6.7.1
-Release:        %mkrel 1
+Name:           netbeans-javaparser
+Version:        6.8
+Release:        1%{?dist}
 Summary:        NetBeans Java Parser
 License:        GPLv2 with exceptions
 Url:            http://java.netbeans.org/javaparser/
-Group:          Development/Java
+Group:          Development/Libraries
 # The source for this package was pulled from upstream's vcs.  Use the
 # following commands to generate the tarball:
 # hg clone http://hg.netbeans.org/main/nb-javac/
 # cd nb-javac/
-# hg update -r 17cd0b404436
-# tar -czvf ../nb-javac-6.7.1.tar.gz .
+# hg update -r 1c46268162cd
+# tar -czvf ../nb-javac-6.8.tar.gz *
 Source0:        nb-javac-%{version}.tar.gz
 
 BuildRequires:  ant
 BuildRequires:  ant-nodeps
-BuildRequires:  java-devel >= 1.6.0
+BuildRequires:  java-devel >= 0:1.6.0
 BuildRequires:  jpackage-utils
-BuildRequires: java-rpmbuild >= 0:1.5.32
+BuildRequires:  java-rpmbuild >= 1.5
 
 Requires:       java >= 1.6.0
 Requires:       jpackage-utils
-Provides:       netbeans-javaparser
 
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
