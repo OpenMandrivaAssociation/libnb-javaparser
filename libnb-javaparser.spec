@@ -59,3 +59,57 @@ find . -name "*.jar" -exec %__rm -f {} \;
 %doc ASSEMBLY_EXCEPTION LICENSE README
 %{_javadir}/*
 
+
+
+%changelog
+* Sun Dec 05 2010 Oden Eriksson <oeriksson@mandriva.com> 6.8-2mdv2011.0
++ Revision: 609761
+- rebuild
+
+* Sun Apr 11 2010 Jaroslav Tulach <jtulach@mandriva.org> 6.8-1mdv2010.1
++ Revision: 533601
+- Upgrading to NetBeans version 6.8
+
+* Fri Sep 25 2009 Jaroslav Tulach <jtulach@mandriva.org> 6.7.1-1mdv2010.0
++ Revision: 448791
+- Update to NetBeans 6.7.1 javaparser
+
+* Sun Sep 13 2009 Thierry Vignaud <tv@mandriva.org> 0:6.5-3mdv2010.0
++ Revision: 438715
+- rebuild
+
+* Sat Jan 17 2009 Jaroslav Tulach <jtulach@mandriva.org> 0:6.5-2mdv2009.1
++ Revision: 330444
++ rebuild (emptylog)
+
+* Mon Jan 05 2009 Jaroslav Tulach <jtulach@mandriva.org> 0:6.5-1mdv2009.1
++ Revision: 324960
+- Updating to version 6.5
+
+* Wed Aug 13 2008 Jaroslav Tulach <jtulach@mandriva.org> 0:6.1-1mdv2009.0
++ Revision: 271348
+- Updating the parser to 6.1 version
+
+* Sat Jul 26 2008 Thierry Vignaud <tv@mandriva.org> 0:6.0-5mdv2009.0
++ Revision: 250291
+- rebuild
+
+* Wed Jan 23 2008 Jaroslav Tulach <jtulach@mandriva.org> 0:6.0-3mdv2008.1
++ Revision: 157149
+- Updated to new upstream source package
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+* Sun Dec 16 2007 Anssi Hannula <anssi@mandriva.org> 0:6.0-2mdv2008.1
++ Revision: 120969
+- buildrequire java-rpmbuild, i.e. build with icedtea on x86(_64)
+
+* Tue Dec 11 2007 Jaroslav Tulach <jtulach@mandriva.org> 0:6.0-1mdv2008.1
++ Revision: 117585
+- Initial version of the NetBeans javaparser library
+- create libnb-javaparser
+
